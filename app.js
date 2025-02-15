@@ -82,7 +82,8 @@ let players = [
     { name: "Aswani", role: "Batsman", basePrice: 50 },
     { name: "Jeevan Kadam", role: "Bowler", basePrice: 50 },
     { name: "Mayur Waykar", role: "All-rounder", basePrice: 50 },
-    { name: "Vanshika Jagram", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Vanshika Jagnam", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Dhruvesh Shyara", role: "Wicketkeeper", basePrice: 50 },
     { name: "Yasar Khan", role: "Batsman", basePrice: 50 },
     { name: "Mahir Patel", role: "Bowler", basePrice: 50 },
     { name: "Dev Patel", role: "All-rounder", basePrice: 50 },
@@ -94,10 +95,10 @@ let allPlayers = players.map(player => ({ ...player, sold: false }));
 
 // Initialize captains
 let captains =  [
-    { id: 1, name: 'Deep Goyani', points: 12000, team: [] },
-    { id: 2, name: 'Krutgya Kaneria', points: 12000, team: [] },
-    { id: 3, name: 'Jagjeet Dangar', points: 12000, team: [] },
-    { id: 4, name: 'Yashvi Dholkiya', points: 12000, team: [] },
+    { id: 1, name: 'Skibidi Rizzlers', points: 12000, team: [] },
+    { id: 2, name: 'Divine Debuggers', points: 12000, team: [] },
+    { id: 3, name: 'Unity Nexus', points: 12000, team: [] },
+    { id: 4, name: 'Elite Titans', points: 12000, team: [] },
 ];
 
 allPlayers = allPlayers.filter(player => !captains.some(captain => captain.name === player.name));
