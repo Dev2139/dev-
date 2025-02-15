@@ -35,57 +35,57 @@ app.use(cors({
 app.use(express.json());
 
 let players = [
-    { name: "Dax Patel ", role: "Batsman", basePrice: 20 },
-    { name: "Dev Patel ", role: "Batsman", basePrice: 20 },
-    { name: "Garvit Trivedi ", role: "Batsman", basePrice: 20 },
-    { name: "Ishita Trivedi ", role: "Batsman", basePrice: 20 },
-    { name: "Kalp Patel ", role: "Batsman", basePrice: 20 },
-    { name: "Kalpan Kaneria", role: "Batsman", basePrice: 20 },
-    { name: "Krishna Paridwal", role: "Batsman", basePrice: 20 },
-    { name: "Mohit Soni ", role: "Batsman", basePrice: 20 },
-    { name: "Priyasha Yadav  ", role: "Batsman", basePrice: 20 },
-    { name: "Shivam Singh Negi ", role: "Batsman", basePrice: 20 },
+    { name: "Dax Patel ", role: "Batsman", basePrice: 50 },
+    { name: "Sujal ", role: "Batsman", basePrice: 50 },
+    { name: "Garvit Trivedi ", role: "Batsman", basePrice: 50 },
+    { name: "Ishita Trivedi ", role: "Batsman", basePrice: 50 },
+    { name: "Kalp Patel ", role: "Batsman", basePrice: 50 },
+    { name: "Kalpan Kaneria", role: "Batsman", basePrice: 50 },
+    { name: "Krishna Paridwal", role: "Batsman", basePrice: 50 },
+    { name: "Mohit Soni ", role: "Batsman", basePrice: 50 },
+    { name: "Priyasha Yadav  ", role: "Batsman", basePrice: 50 },
+    { name: "Shivam Singh Negi ", role: "Batsman", basePrice: 50 },
     
-    { name: "Isha Patel ", role: "Bowler", basePrice: 20 },
-    { name: "Arjun Divraniya ", role: "Bowler", basePrice: 20 },
-    { name: "Arya Patel ", role: "Bowler", basePrice: 20 },
-    { name: "Dhruv Sonagra ", role: "Bowler", basePrice: 20 },
-    { name: "Dhruvil Patel ", role: "Bowler", basePrice: 20 },
-    { name: "Dridti Gupta ", role: "Bowler", basePrice: 20 },
-    { name: "Akshar Gangani ", role: "Bowler", basePrice: 20 },
-    { name: "Hardagya Rajput ", role: "Bowler", basePrice: 20 },
-    { name: "Homasvi Kaneriya ", role: "Bowler", basePrice: 20 },
-    { name: "Parth Jadav ", role: "Bowler", basePrice: 20 },
+    { name: "Isha Patel ", role: "Bowler", basePrice: 50 },
+    { name: "Arjun Divraniya ", role: "Bowler", basePrice: 50 },
+    { name: "Arya Patel ", role: "Bowler", basePrice: 50 },
+    { name: "Dhruv Sonagra ", role: "Bowler", basePrice: 50 },
+    { name: "Dhruvil Patel ", role: "Bowler", basePrice: 50 },
+    { name: "Drishti Gupta ", role: "Bowler", basePrice: 50 },
+    { name: "Akshar Gangani ", role: "Bowler", basePrice: 50 },
+    { name: "Hardagya Rajput ", role: "Bowler", basePrice: 50 },
+    { name: "Homasvi Kaneriya ", role: "Bowler", basePrice: 50 },
+    { name: "Parth Jadav ", role: "Bowler", basePrice: 50 },
   
-    { name: "Jatan Mathasoliya ", role: "All-rounder", basePrice: 20 },
-    { name: "Jatin Rajwani ", role: "All-rounder", basePrice: 20 },
-    { name: "Jenil Savalia ", role: "All-rounder", basePrice: 20 },
-    { name: "Kaniska Trivedi  ", role: "All-rounder", basePrice: 20 },
-    { name: "Kashyap Dhamecha ", role: "All-rounder", basePrice: 20 },
-    { name: "Khushbu Patel ", role: "All-rounder", basePrice: 20 },
-    { name: "Khushi Rajput ", role: "All-rounder", basePrice: 20 },
-    { name: "Kiran Chaudhary ", role: "All-rounder", basePrice: 20 },
-    { name: "Krish shyara ", role: "All-rounder", basePrice: 20 },
-    { name: "Mayank Dudhatra ", role: "All-rounder", basePrice: 20 },
+    { name: "Jatan Mathasoliya ", role: "All-rounder", basePrice: 50 },
+    { name: "Jatin Rajwani ", role: "All-rounder", basePrice: 50 },
+    { name: "Jenil Savalia ", role: "All-rounder", basePrice: 50 },
+    { name: "Kaniska Trivedi  ", role: "All-rounder", basePrice: 50 },
+    { name: "Kashyap Dhamecha ", role: "All-rounder", basePrice: 50 },
+    { name: "Khushbu Patel ", role: "All-rounder", basePrice: 50 },
+    { name: "Khushi Rajput ", role: "All-rounder", basePrice: 50 },
+    { name: "Kiran Chaudhary ", role: "All-rounder", basePrice: 50 },
+    { name: "Krish shyara ", role: "All-rounder", basePrice: 50 },
+    { name: "Mayank Dudhatra ", role: "All-rounder", basePrice: 50 },
   
-    { name: "Nagesh Jagtap ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Narvin ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Prem Kambliya ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Priy Mavani  ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Ridham Patel ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Rijans Patoliya ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Veer Modi ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Shubham Modi ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Aashish Tejvani ", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Aditya Rajput ", role: "Wicketkeeper", basePrice: 20 },
+    { name: "Nagesh Jagtap ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Narvin ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Prem Kambliya ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Priy Mavani  ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Ridham Patel ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Rijans Patoliya ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Veer Modi ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Shubham Modi ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Aashish Tejvani ", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Aditya Rajput ", role: "Wicketkeeper", basePrice: 50 },
   
-    { name: "Aswani", role: "Batsman", basePrice: 20 },
-    { name: "Jeevan Kadam", role: "Bowler", basePrice: 20 },
-    { name: "Mayur Waykar", role: "All-rounder", basePrice: 20 },
-    { name: "Vanshika Jagram", role: "Wicketkeeper", basePrice: 20 },
-    { name: "Yasar Khan", role: "Batsman", basePrice: 20 },
-    { name: "Mahir Patel", role: "Bowler", basePrice: 20 },
-    { name: "Sujal", role: "All-rounder", basePrice: 20 },
+    { name: "Aswani", role: "Batsman", basePrice: 50 },
+    { name: "Jeevan Kadam", role: "Bowler", basePrice: 50 },
+    { name: "Mayur Waykar", role: "All-rounder", basePrice: 50 },
+    { name: "Vanshika Jagram", role: "Wicketkeeper", basePrice: 50 },
+    { name: "Yasar Khan", role: "Batsman", basePrice: 50 },
+    { name: "Mahir Patel", role: "Bowler", basePrice: 50 },
+    { name: "Dev Patel", role: "All-rounder", basePrice: 50 },
     
   ];
 
@@ -120,7 +120,7 @@ app.post('/players', (req, res) => {
     const newPlayer = { name, house, age, mobile, sold: false }; // Add sold property
     players.push(newPlayer);
     allPlayers.push({ ...newPlayer }); // Update allPlayers as well
-    res.status(201).json(newPlayer);
+    res.status(501).json(newPlayer);
 });
 
 // Get all players (for the players list page)
@@ -174,8 +174,8 @@ io.on('connection', (socket) => {
     socket.on('placeBid', (bid, captainId) => {
         const captain = captains.find(c => c.id === captainId);
 
-        if (captain.team.length >= 6) {
-            socket.emit('errorMessage', 'You can only buy 6 players');
+        if (captain.team.length >= 13) {
+            socket.emit('errorMessage', 'You can only buy 13 players');
             return;
           }
 
