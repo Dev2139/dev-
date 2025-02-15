@@ -14,7 +14,10 @@ const io = socketIo(server, {
     },
 });
 
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({
+    origin: '*',
+    credentials: true,
+}));
 app.use(express.json());
 
 let players = [
@@ -71,10 +74,11 @@ let players = [
     { name: "Sujal", role: "All-rounder", basePrice: 20 },
     
   ]; // Same player data as before
- // Same players array
 
+// Create a copy for the all players list, and add sold property
 let allPlayers = players.map(player => ({ ...player, sold: false }));
 
+// Initialize captains
 let captains = [
     { id: 1, name: 'Deep Goyani', points: 1200, team: [] },
     { id: 2, name: 'Krutgya Kaneria', points: 1200, team: [] },
@@ -85,23 +89,30 @@ let captains = [
 allPlayers = allPlayers.filter(player => !captains.some(captain => captain.name === player.name));
 players = players.filter(player => !captains.some(captain => captain.name === player.name));
 
-let randomizedPlayers = [...players].sort(() => Math.random() - 0.5);
+let randomizedPlayers = players.sort(() => Math.random() - 0.5);
+
 let currentPlayerIndex = 0;
-let currentPlayer = randomizedPlayers[currentPlayerIndex] || null;
+let currentPlayer = randomizedPlayers[currentPlayerIndex];
 let passedPlayers = [];
 
+// POST endpoint to add a new player
 app.post('/players', (req, res) => {
-    const { name, role, basePrice } = req.body;
-    const newPlayer = { name, role, basePrice, sold: false };
+    const { name, house, age, mobile } = req.body;
+    const newPlayer = { name, house, age, mobile, sold: false };
     players.push(newPlayer);
-    allPlayers.push(newPlayer);
-    randomizedPlayers.push(newPlayer);
+    allPlayers.push({ ...newPlayer });
     res.status(201).json(newPlayer);
 });
 
-app.get('/all-players', (req, res) => res.json(allPlayers));
+// GET endpoint to get all players
+app.get('/all-players', (req, res) => {
+    res.json(allPlayers);
+});
 
-app.get('/players', (req, res) => res.json(randomizedPlayers));
+// GET endpoint to get players for auction
+app.get('/players', (req, res) => {
+    res.json(randomizedPlayers);
+});
 
 app.get('/auction-start', (req, res) => {
     res.json({ randomizedPlayers, captains, currentPlayer });
@@ -111,28 +122,29 @@ app.post('/place-bid', (req, res) => {
     const { bid, captainId } = req.body;
     const captain = captains.find(c => c.id === captainId);
 
-    if (!captain) return res.status(404).json({ message: 'Captain not found' });
-    if (captain.team.length >= 13) return res.status(400).json({ message: 'You can only buy 13 players' });
-    if (bid > captain.points) return res.status(400).json({ message: 'Not enough points to place this bid!' });
+    if (captain.team.length >= 6) {
+        return res.status(400).json({ message: 'You can only buy 6 players' });
+    }
 
-    captain.points -= bid;
-    currentPlayer.sold = true;
-
-    const allPlayersIndex = allPlayers.findIndex(p => p.name === currentPlayer.name);
-    if (allPlayersIndex !== -1) allPlayers[allPlayersIndex].sold = true;
-
-    captain.team.push({ player: currentPlayer, bid });
-    moveToNextPlayer();
-
-    io.emit('update', { captains, currentPlayer, allPlayers });
-    res.status(200).json({ captains, currentPlayer, allPlayers });
+    if (bid > captain.points) {
+        return res.status(400).json({ message: 'Not enough points to place this bid!' });
+    } else {
+        captain.points -= bid;
+        currentPlayer.sold = true;
+        const allPlayersIndex = allPlayers.findIndex(p => p.name === currentPlayer.name);
+        if (allPlayersIndex !== -1) {
+            allPlayers[allPlayersIndex].sold = true;
+        }
+        captain.team.push({ player: currentPlayer, bid });
+        moveToNextPlayer();
+        return res.status(200).json({ captains, currentPlayer, allPlayers });
+    }
 });
 
+// Endpoint to pass the current player
 app.post('/pass-player', (req, res) => {
     passedPlayers.push(currentPlayer);
     moveToNextPlayer();
-
-    io.emit('update', { currentPlayer });
     res.status(200).json({ currentPlayer });
 });
 
@@ -150,7 +162,5 @@ function moveToNextPlayer() {
         currentPlayer = null;
     }
 }
-
-server.listen(3000, () => console.log('Server running on http://localhost:3000'));
 
 module.exports = app;
