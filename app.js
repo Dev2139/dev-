@@ -94,10 +94,10 @@ let allPlayers = players.map(player => ({ ...player, sold: false }));
 
 // Initialize captains
 let captains =  [
-    { id: 1, name: 'Deep Goyani', points: 1200, team: [] },
-    { id: 2, name: 'Krutgya Kaneria', points: 1200, team: [] },
-    { id: 3, name: 'Jagjeet Dangar', points: 1200, team: [] },
-    { id: 4, name: 'Yashvi Dholkiya', points: 1200, team: [] },
+    { id: 1, name: 'Deep Goyani', points: 12000, team: [] },
+    { id: 2, name: 'Krutgya Kaneria', points: 12000, team: [] },
+    { id: 3, name: 'Jagjeet Dangar', points: 12000, team: [] },
+    { id: 4, name: 'Yashvi Dholkiya', points: 12000, team: [] },
 ];
 
 allPlayers = allPlayers.filter(player => !captains.some(captain => captain.name === player.name));
